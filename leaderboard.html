@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#100608"
+    >
+
+    <title>
+        Leaderboard | Moyo's A-Level Chemistry
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="leaderboard.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+
+    <!-- =====================================
+         TOPBAR
+    ====================================== -->
+
+    <header class="topbar">
+
+        <a
+            href="index.html"
+            class="brand"
+        >
+            Moyo's A-Level Chemistry
+        </a>
+
+
+        <a
+            href="index.html"
+            class="back-link"
+        >
+            ← Home
+        </a>
+
+    </header>
+
+
+
+    <!-- =====================================
+         MAIN
+    ====================================== -->
+
+    <main class="leaderboard-page">
+
+
+        <section class="intro">
+
+            <span class="eyebrow">
+                CHEMISTRY CHALLENGE
+            </span>
+
+            <h1>
+                Leaderboard
+            </h1>
+
+            <p>
+                See how students are performing
+                in the current Chemistry quiz.
+            </p>
+
+        </section>
+
+
+
+        <!-- =================================
+             LOADING
+        ================================== -->
+
+        <div
+            id="loading"
+            class="state"
+        >
+
+            <div class="loader"></div>
+
+            <p>
+                Loading leaderboard...
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================
+             ERROR
+        ================================== -->
+
+        <div
+            id="error-message"
+            class="state error-state"
+        >
+
+            <p>
+                We couldn't load the leaderboard.
+            </p>
+
+            <button
+                id="retry-button"
+                class="retry-button"
+            >
+                Try Again
+            </button>
+
+        </div>
+
+
+
+        <!-- =================================
+             LEADERBOARD
+        ================================== -->
+
+        <section
+            id="leaderboard-section"
+            class="leaderboard-section"
+        >
+
+
+            <!-- TOP THREE -->
+
+            <div
+                id="podium"
+                class="podium"
+            ></div>
+
+
+
+            <!-- TABLE -->
+
+            <div class="table-card">
+
+                <div class="table-header">
+
+                    <span>
+                        Rank
+                    </span>
+
+                    <span>
+                        Student
+                    </span>
+
+                    <span>
+                        Score
+                    </span>
+
+                    <span>
+                        %
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="leaderboard-list"
+                    class="leaderboard-list"
+                ></div>
+
+            </div>
+
+
+
+            <!-- CURRENT STUDENT -->
+
+            <div
+                id="student-result"
+                class="student-result"
+            ></div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================
+         FOOTER
+    ====================================== -->
+
+    <footer class="footer">
+
+        <p>
+            Built with care by Ven.
+        </p>
+
+    </footer>
+
+
+</div>
+
+
+<!-- SUPABASE -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script src="leaderboard.js"></script>
+
+</body>
+
+</html>
