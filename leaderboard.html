@@ -75,7 +75,7 @@
                 Leaderboard
             </h1>
 
-            <p>
+            <p id="intro-text">
                 See how students are performing
                 in the current Chemistry quiz.
             </p>
@@ -98,6 +98,44 @@
             <p>
                 Loading leaderboard...
             </p>
+
+        </div>
+
+
+
+        <!-- =================================
+             HIDDEN / DISABLED
+        ================================== -->
+
+        <div
+            id="disabled-message"
+            class="disabled-message"
+        >
+
+            <div class="disabled-icon">
+                🔒
+            </div>
+
+            <span class="disabled-eyebrow">
+                LEADERBOARD CLOSED
+            </span>
+
+            <h2>
+                Rankings are currently hidden.
+            </h2>
+
+            <p>
+                Your quiz result has been recorded.
+                The leaderboard will be available
+                when it is opened.
+            </p>
+
+            <a
+                href="index.html"
+                class="home-button"
+            >
+                Return Home
+            </a>
 
         </div>
 
@@ -213,7 +251,9 @@
 
 <!-- SUPABASE -->
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
 
 
 <script src="leaderboard.js"></script>
