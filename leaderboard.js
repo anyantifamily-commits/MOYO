@@ -13,7 +13,7 @@
    false = leaderboard is hidden from students
 */
 
-const LEADERBOARD_ENABLED = false;
+const LEADERBOARD_ENABLED = true;
 
 
 /* =========================================
