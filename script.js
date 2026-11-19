@@ -12,7 +12,7 @@ const QUIZ_SETTINGS = {
     duration: 30,
 
     // Change this whenever you create a completely new quiz.
-    version: "TOPIC_01",
+    version: "TOPIC_02",
 
     // Change this when you want a new access code.
     accessCode: "MOYO101"
