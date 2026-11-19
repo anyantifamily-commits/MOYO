@@ -282,6 +282,145 @@ body {
 
 
 /* =========================================
+   DISABLED LEADERBOARD
+========================================= */
+
+.disabled-message {
+
+    display: none;
+
+    max-width: 520px;
+
+    margin:
+        10px auto 0;
+
+    padding:
+        55px 30px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+    border-radius: 26px;
+
+    background:
+        rgba(25, 16, 21, 0.78);
+
+    backdrop-filter:
+        blur(15px);
+
+}
+
+
+.disabled-icon {
+
+    width: 54px;
+
+    height: 54px;
+
+    margin:
+        0 auto 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(211,154,170,0.25);
+
+    border-radius: 50%;
+
+    background:
+        rgba(76, 39, 51, 0.3);
+
+    font-size: 1.25rem;
+
+}
+
+
+.disabled-eyebrow {
+
+    display: block;
+
+    margin-bottom: 13px;
+
+    color: #d9a9b8;
+
+    font-size: 0.68rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.15em;
+
+}
+
+
+.disabled-message h2 {
+
+    margin-bottom: 13px;
+
+    color: #f6edf1;
+
+    font-size: 1.35rem;
+
+    letter-spacing: -0.02em;
+
+}
+
+
+.disabled-message p {
+
+    max-width: 400px;
+
+    margin:
+        0 auto;
+
+    color: #aa9aa0;
+
+    font-size: 0.88rem;
+
+    line-height: 1.7;
+
+}
+
+
+.home-button {
+
+    display: inline-block;
+
+    margin-top: 28px;
+
+    padding:
+        12px 23px;
+
+    border-radius: 999px;
+
+    background: #d39aaa;
+
+    color: #170d11;
+
+    text-decoration: none;
+
+    font-size: 0.82rem;
+
+    font-weight: 700;
+
+}
+
+
+.home-button:hover {
+
+    background: #e1afbd;
+
+}
+
+
+/* =========================================
    LEADERBOARD SECTION
 ========================================= */
 
@@ -755,6 +894,14 @@ body {
 
         padding:
             19px;
+
+    }
+
+
+    .disabled-message {
+
+        padding:
+            45px 22px;
 
     }
 
