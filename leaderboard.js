@@ -5,6 +5,25 @@
 
 
 /* =========================================
+   LEADERBOARD CONTROL
+========================================= */
+
+/*
+   true  = students can see the leaderboard
+   false = leaderboard is hidden from students
+*/
+
+const LEADERBOARD_ENABLED = false;
+
+
+/* =========================================
+   ACTIVE QUIZ VERSION
+========================================= */
+
+const QUIZ_VERSION = "TOPIC_02";
+
+
+/* =========================================
    SUPABASE
 ========================================= */
 
@@ -14,18 +33,12 @@ const SUPABASE_URL =
 const SUPABASE_KEY =
     "sb_publishable_OiRIQXo8SQjm6ZeT7VXtoA_RqaK2p74";
 
+
 const supabaseClient =
     window.supabase.createClient(
         SUPABASE_URL,
         SUPABASE_KEY
     );
-
-
-/* =========================================
-   ACTIVE QUIZ VERSION
-========================================= */
-
-const QUIZ_VERSION = "TOPIC_03";
 
 
 /* =========================================
@@ -40,6 +53,9 @@ const errorMessage =
 
 const retryButton =
     document.getElementById("retry-button");
+
+const disabledMessage =
+    document.getElementById("disabled-message");
 
 const leaderboardSection =
     document.getElementById("leaderboard-section");
@@ -85,16 +101,44 @@ function formatPercentage(value) {
 
 
 /* =========================================
+   HIDE ALL STATES
+========================================= */
+
+function hideAllStates() {
+
+    loading.style.display = "none";
+
+    errorMessage.style.display = "none";
+
+    disabledMessage.style.display = "none";
+
+    leaderboardSection.style.display = "none";
+}
+
+
+/* =========================================
+   SHOW DISABLED STATE
+========================================= */
+
+function showDisabledLeaderboard() {
+
+    hideAllStates();
+
+    disabledMessage.style.display =
+        "block";
+}
+
+
+/* =========================================
    SHOW LOADING
 ========================================= */
 
 function showLoading() {
 
-    loading.style.display = "block";
+    hideAllStates();
 
-    errorMessage.style.display = "none";
-
-    leaderboardSection.style.display = "none";
+    loading.style.display =
+        "block";
 }
 
 
@@ -104,14 +148,14 @@ function showLoading() {
 
 function showError(message) {
 
-    loading.style.display = "none";
+    hideAllStates();
 
-    leaderboardSection.style.display = "none";
+    errorMessage.style.display =
+        "block";
 
-    errorMessage.style.display = "block";
-
-    errorMessage.querySelector("p").textContent =
-        message;
+    errorMessage
+        .querySelector("p")
+        .textContent = message;
 }
 
 
@@ -121,11 +165,10 @@ function showError(message) {
 
 function showLeaderboard() {
 
-    loading.style.display = "none";
+    hideAllStates();
 
-    errorMessage.style.display = "none";
-
-    leaderboardSection.style.display = "block";
+    leaderboardSection.style.display =
+        "block";
 }
 
 
@@ -135,7 +178,21 @@ function showLeaderboard() {
 
 async function loadLeaderboard() {
 
+    /*
+       If the leaderboard is disabled,
+       do not even contact Supabase.
+    */
+
+    if (!LEADERBOARD_ENABLED) {
+
+        showDisabledLeaderboard();
+
+        return;
+    }
+
+
     showLoading();
+
 
     console.log(
         "Loading leaderboard..."
@@ -148,7 +205,7 @@ async function loadLeaderboard() {
 
 
     /* =====================================
-       REQUEST
+       SUPABASE REQUEST
     ===================================== */
 
     const requestPromise =
@@ -201,7 +258,7 @@ async function loadLeaderboard() {
 
 
     /* =====================================
-       TIMEOUT ERROR
+       TIMEOUT
     ===================================== */
 
     if (result.timeout) {
@@ -324,19 +381,37 @@ function renderPodium(data) {
         card.innerHTML = `
 
             <span class="podium-rank">
-                ${position === 1 ? "🥇" :
-                  position === 2 ? "🥈" :
-                  "🥉"}
+
+                ${
+                    position === 1
+                        ? "🥇"
+                        : position === 2
+                            ? "🥈"
+                            : "🥉"
+                }
+
             </span>
+
 
             <span class="podium-name">
-                ${escapeHTML(student.student_name)}
+
+                ${escapeHTML(
+                    student.student_name
+                )}
+
             </span>
 
+
             <span class="podium-score">
+
                 ${student.score}/${student.total_questions}
+
                 ·
-                ${formatPercentage(student.percentage)}
+
+                ${formatPercentage(
+                    student.percentage
+                )}
+
             </span>
 
         `;
@@ -376,22 +451,34 @@ function renderLeaderboard(data) {
             <div class="rank ${
                 rank <= 3 ? "top" : ""
             }">
+
                 ${rank}
+
             </div>
 
 
             <div class="student">
-                ${escapeHTML(student.student_name)}
+
+                ${escapeHTML(
+                    student.student_name
+                )}
+
             </div>
 
 
             <div class="score">
+
                 ${student.score}/${student.total_questions}
+
             </div>
 
 
             <div class="percent">
-                ${formatPercentage(student.percentage)}
+
+                ${formatPercentage(
+                    student.percentage
+                )}
+
             </div>
 
         `;
@@ -474,8 +561,10 @@ function renderStudentResult(data) {
             </div>
 
             <div class="student-result-rank">
+
                 Your result has not appeared
                 on the leaderboard yet.
+
             </div>
 
         `;
@@ -500,20 +589,33 @@ function renderStudentResult(data) {
             <div>
 
                 <div class="student-result-name">
-                    ${escapeHTML(student.student_name)}
+
+                    ${escapeHTML(
+                        student.student_name
+                    )}
+
                 </div>
 
+
                 <div class="student-result-rank">
+
                     Rank #${studentIndex + 1}
+
                 </div>
 
             </div>
 
 
             <div class="student-result-score">
+
                 ${student.score}/${student.total_questions}
+
                 ·
-                ${formatPercentage(student.percentage)}
+
+                ${formatPercentage(
+                    student.percentage
+                )}
+
             </div>
 
         </div>
