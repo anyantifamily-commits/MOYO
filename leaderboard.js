@@ -20,7 +20,7 @@ const LEADERBOARD_ENABLED = true;
    ACTIVE QUIZ VERSION
 ========================================= */
 
-const QUIZ_VERSION = "TOPIC_02";
+const QUIZ_VERSION = "TOPIC_01";
 
 
 /* =========================================
